@@ -30,7 +30,13 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if(num%15==0){
+        return("FizzBuzz");
+    } else if(num%5==0){
+        return ("Buzz");
+    } else if(num%3==0){
+        return ("Fizz");
+    } else return (num);
 }
 
 
@@ -46,7 +52,11 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    let fact = 1;
+    for (let i=1; i<=n; i++){
+        fact *= i;
+    }
+    return fact;
 }
 
 
@@ -63,7 +73,11 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    let sum = 0;
+    for(let i = n1; i <= n2; i++) {
+        sum += i;
+    }
+    return sum;
 }
 
 
@@ -82,8 +96,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
-}
+    if((a+b>c) & (a+c>b) & (b+c>a)){
+        return true;
+    } else 
+        return false;
+    }
 
 
 /**
@@ -166,8 +183,12 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
-}
+    for (let i = 0; i < Math.round(str.length / 2); i++) {
+        if (str.slice(i + 1).indexOf(str[i]) == -1) {
+            return str[i];
+        }
+    }
+    return null;}
 
 
 /**
@@ -192,7 +213,27 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    let str = '';
+
+    if (isStartIncluded) {
+        str = '['
+    } else {
+        str = '('
+    }
+
+    if (a > b) {
+        str += b + ', ' + a;
+    } else {
+        str += a + ', ' + b;
+    }
+
+    if (isEndIncluded) {
+        str += ']'
+    } else {
+        str += ')'
+    }
+
+    return str;
 }
 
 
@@ -209,7 +250,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    return str.split("").reverse().join("");
 }
 
 
@@ -226,7 +267,7 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    return +(("" + num).split("").reverse().join(""));
 }
 
 
@@ -332,8 +373,29 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-    throw new Error('Not implemented');
-}
+    let temp = (endDate - startDate) / 1000;
+    if(temp <= 45) 
+        return 'a few seconds ago';
+    if(temp <= 90) 
+        return 'a minute ago';
+    if(temp <= 45 * 60) 
+        return Math.round((temp - 0.001) / 60) + ' minutes ago';
+    if(temp <= 90 * 60) 
+        return 'an hour ago';
+    if(temp <= 22 * 60 * 60) 
+        return Math.round((temp - 0.001) / (60 * 60)) + ' hours ago';
+    if(temp <= 36 * 60 * 60) 
+        return 'a day ago';
+    if(temp <= 25 * 24 * 60 * 60) 
+        return Math.round((temp - 0.001) / (24 * 60 * 60)) + ' days ago';
+    if(temp <= 45 * 24 * 60 * 60) 
+        return 'a month ago';
+    if(temp <= 345 * 24 * 60 * 60) 
+        return Math.round((temp - 0.001) / (30 * 24 * 60 * 60)) + ' months ago';
+    if(temp <= 545 * 24 * 60 * 60) 
+        return 'a year ago';
+    if(temp >= 545 * 24 * 60 * 60 ) 
+        return Math.round((temp - 0.001) / (365 * 24 * 60 * 60)) + ' years ago';}
 
 
 /**
@@ -356,7 +418,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    return num.toString(n);
 }
 
 
